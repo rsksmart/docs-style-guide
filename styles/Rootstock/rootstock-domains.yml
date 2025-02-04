@@ -1,0 +1,10 @@
+extends: substitution
+message: "Use '%s' domain in '%s'"
+link: https://docs.ubuntu.com/styleguide/en/#other-canonical-products
+ignorecase: true
+level: error
+scope: raw
+action:
+  name: replace
+swap:
+  - '.*rsk\.co.*': rootstock.io
