@@ -1,37 +1,23 @@
-# name: Rootstock Vale Styles
-# author: '@evilnick'
-# description: 'Installs Vale style rules from the Rootstock documentation style guide.'
-# inputs:
-#   vale-config:  
-#     description: 'path/to/vale.ini to use'
-#     required: true
-#     default: './vale.ini'
-# runs:
-#   using: "composite"
-#   steps:
-#     - name: check Vale config
-#       env:
-#           TEMP_DIR: ${{ runner.temp }}
-#           ACTION_DIR: ${{ github.action_path }}
-#       run: |
+name: Lint Documentation
 
-#         if ! test -d ./styles/Canonical; then
-#         mkdir -p styles/Canonical
-#         cp $ACTION_DIR/styles/Canonical/* styles/Canonical/
-#         echo "Styles copied to working dir"
-#         fi
+on:
+  [pull_request]
 
-#         if ! test -d ./styles/config/vocabularies/Canonical; then
-#         mkdir -p styles/config/vocabularies/Canonical
-#         cp $ACTION_DIR/styles/config/vocabularies/Canonical/* styles/config/vocabularies/Canonical/
-#         echo "Vocab copied to working dir"
-#         tree styles
-#         fi
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-#         if ! test -f ./vale.ini; then
-#         echo "No vale.ini found, using default"
-#         cp $ACTION_DIR/vale.ini .
-#         fi
-        
-#       shell: bash
+      - name: Fetch docs-styles repository
+        run: |
+          git clone https://github.com/ivegabr/docs-styles.git ./docs-styles
 
+      - name: Install Vale via errata-ai/vale-action
+        uses: errata-ai/vale-action@v2
+        with:
+            filter_mode: diff_context
+            vale_flags: "--no-exit --minAlertLevel=error"
+            reporter: github-pr-review
+            fail_on_error: true

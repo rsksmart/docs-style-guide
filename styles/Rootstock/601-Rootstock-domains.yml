@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' domain in '%s'"
+ignorecase: true
+level: error
+scope: raw
+action:
+  name: replace
+swap:
+  - '.*rsk\.co.*': rootstock.io

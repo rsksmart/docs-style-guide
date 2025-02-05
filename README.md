@@ -19,16 +19,16 @@ To manually check your documentation with Vale rules use the following steps:
 
 1. Install Vale
     ```shell
-    sudo snap install vale
+    brew install vale
     ```
 2. Clone this repository.
 3. Run Vale with the configuration file `vale.ini` from this repository for testing your documentation source files: 
   
     ```shell
-    vale --config ~/docs-styles/vale.ini ~/product/docs/
+    vale --config ~/docs-styles/vale.ini ~/product-repository
     ```
 
-For automation, see the [Rootstock Style GitHub action](#the-canonical-style-github-action).
+For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
 ### Adding to the rules
 
@@ -40,7 +40,7 @@ If you are completely new to developing Vale rules, see this [introductory guide
 
 ### Using the rules
 
-The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Canonical Styles. Two common scenarios are also catered for more directly here, as detailed below.
+The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Rootstock Styles. Two common scenarios are also catered for more directly here, as detailed below.
 
 ## The Rootstock Style GitHub action
 
@@ -73,6 +73,32 @@ jobs:
             fail_on_error: true
 ```
 
+```yaml
+name: Lint Documentation
+
+on:
+  [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch docs-styles repository
+        run: |
+          git clone https://github.com/ivegabr/docs-styles.git ./docs-styles
+
+      - name: Install Vale via errata-ai/vale-action
+        uses: errata-ai/vale-action@v2
+        with:
+            filter_mode: diff_context
+            vale_flags: "--no-exit --minAlertLevel=error"
+            reporter: github-pr-review
+            fail_on_error: true
+```
+
 In the example above, the workflow is organised as a single job. This is important as the actions rely on persistence through the run.
 There are three job steps:
  - The github/checkout action: this fetches the code from the repo calling the workflow
@@ -91,7 +117,7 @@ There are times when it is useful to be able to manually run Vale from a termina
 
 1. **Clone the repository**
    ```
-   git clone https://github.com/canonical/praecepta.git
+   git clone https://github.com/ivegabr/docs-styles.git
    ```
 2. **Set environment variables**
    ```

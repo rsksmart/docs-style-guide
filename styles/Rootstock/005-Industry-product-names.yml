@@ -6,15 +6,15 @@ level: error
 action:
   name: replace
 swap:
-  nVidia : 'NVIDIA'
-  Openstack : 'OpenStack'
   Postgresql : 'PostgreSQL'
   Kuberentes : 'Kubernetes' 
   Aws : 'AWS' 
   Mysql : 'MySQL' 
   docker : 'Docker' 
-  KubeFlow : 'Kubeflow' 
-  Google cloud : 'Google Cloud Platform'
-  Influxdb : 'InfluxDB' 
-  MM : 'Mattermost'
-  
+  JSON-RPC: JSON-RPC
+  JSON RPC: JSON-RPC
+  evm: EVM
+  api: API
+  testnet: Testnet
+  mainnet: Mainnet
+  ethereum: Ethereum  

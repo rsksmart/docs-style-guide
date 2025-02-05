@@ -1,9 +1,0 @@
-extends: substitution
-message: "Use '%s' instead of '%s'"
-link: https://docs.ubuntu.com/styleguide/en/#other-canonical-products
-ignorecase: true
-level: error
-action:
-  name: replace
-swap:
-  - RSK: Rootstock
