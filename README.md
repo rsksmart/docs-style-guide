@@ -51,29 +51,6 @@ This repository also includes a file, `action.yml`, which is the basis of a GitH
 Your repository can make use of the action in a workflow. An example workflow is included in this repository and is demonstrated here. Note that the style guide action is merely part of a functioning workflow.
 
 ```yaml
-on: [pull_request]
-
-jobs:
-  vale:
-    name: Style checker
-    runs-on: ubuntu-22.04
-    defaults:
-        run:
-            shell: bash
-            working-directory: .
-    steps:
-        - name: Checkout repo to runner
-          uses: actions/checkout@v3
-        - name: Install styles
-          uses: canonical/praecepta@main
-        - name: Run Vale tests
-          uses: errata-ai/vale-action@reviewdog
-          with:
-            files: ./docs
-            fail_on_error: true
-```
-
-```yaml
 name: Lint Documentation
 
 on:
