@@ -1,21 +1,21 @@
-# Rootostock documentation style guide
+# Rootstock documentation style guide
 
-This repository contains the documentation and the Vale rules for the documentation style guide.
+This repository contains the documentation and the Vale rules for the Rootstock documentation style guide.
 
 The style guide itself is written in Markdown and contained in the `en` directory.
 
 Based on:
-[Canonical Style Guide](https://github.com/canonical/praecepta)
-[Google Developer Documentation Style Guide](https://developers.google.com/style)
+- [Canonical Style Guide](https://github.com/canonical/praecepta)
+- [Google Developer Documentation Style Guide](https://developers.google.com/style)
 
-## The Vale rules
+## Vale rules
 
 The Vale linter operates from a series of rules. These are defined in individual YAML files, grouped into 'Styles'.
 This repository contains the Rootstock set of rules. 
 
 ### Manual check
 
-To manually check your documentation with Vale rules use the following steps:
+To manually check your documentation with Vale rules, use the following steps:
 
 1. Install Vale
     ```shell
@@ -23,7 +23,6 @@ To manually check your documentation with Vale rules use the following steps:
     ```
 2. Clone this repository.
 3. Run Vale with the configuration file `vale.ini` from this repository for testing your documentation source files: 
-  
     ```shell
     vale --config ~/docs-styles/vale.ini ~/product-repository
     ```
@@ -42,7 +41,7 @@ If you are completely new to developing Vale rules, see this [introductory guide
 
 The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Rootstock Styles. Two common scenarios are also catered for more directly here, as detailed below.
 
-## The Rootstock Style GitHub action
+## The Rootstock Style GitHub Action
 
 This repository also includes a file, `action.yml`, which is the basis of a GitHub action to automatically run Vale checks on incoming pull requests. 
 

@@ -2,7 +2,7 @@
 
 ![Product logo](../media/logo.png)
 
-This is an as yet incomplete guide to the language and style conventions used
+This is a working guide to the language and style conventions used
 for Rootstock documentation projects. 
 
 Based on:

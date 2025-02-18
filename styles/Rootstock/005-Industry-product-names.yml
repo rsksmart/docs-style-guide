@@ -8,13 +8,12 @@ action:
 swap:
   Postgresql : 'PostgreSQL'
   Kuberentes : 'Kubernetes' 
-  Aws : 'AWS' 
   Mysql : 'MySQL' 
   docker : 'Docker' 
-  JSON-RPC: JSON-RPC
   JSON RPC: JSON-RPC
-  evm: EVM
-  api: API
   testnet: Testnet
   mainnet: Mainnet
-  ethereum: Ethereum  
+  regtest: Regtest
+  ethereum: Ethereum
+  web3: Web3
+
