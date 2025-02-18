@@ -1,10 +1,10 @@
-# Rootstock documentation style guide
+# Rootstock Documentation Style Guide
 
 This repository contains the documentation and the Vale rules for the Rootstock documentation style guide.
 
 The style guide itself is written in Markdown and contained in the `en` directory.
 
-Based on:
+It is based on:
 - [Canonical Style Guide](https://github.com/canonical/praecepta)
 - [Google Developer Documentation Style Guide](https://developers.google.com/style)
 
@@ -13,7 +13,7 @@ Based on:
 The Vale linter operates from a series of rules. These are defined in individual YAML files, grouped into 'Styles'.
 This repository contains the Rootstock set of rules. 
 
-### Manual check
+## Manual check
 
 To manually check your documentation with Vale rules, use the following steps:
 
@@ -27,11 +27,13 @@ To manually check your documentation with Vale rules, use the following steps:
     vale --config ~/docs-styles/vale.ini ~/product-repository
     ```
 
-For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
+To run the documentation and test locally, see [Running locally](#running-locally)
+
+> For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
 ### Adding to the rules
 
-Anyone is welcome to submit a PR to add additional rules. However, no additions will be considered unless they are part of the Rootstock Style Guide as found at the website above.
+Anyone is welcome to submit a PR to add additional rules. However, no additions will be considered unless they are part of the Rootstock Style Guide as found in this [docs repository](https://github.com/rsksmart/devportal/blob/main/STYLE-GUIDE.md).
 
 For a reference on rule syntax, see the Vale [documentation on Styles][Vale styles].
 
@@ -89,28 +91,28 @@ There are three job steps:
 
 ## Running locally
 
-There are times when it is useful to be able to manually run Vale from a terminal locally. The recommended way to do this is to clone the repository and then set up environment variables. Initially, you will need to create a local copy of the rules:
+If you're looking to manually run Vale from a terminal, the recommended way is to clone the repository and then set up environment variables. You will need to create a local copy of the rules:
 
 1. **Clone the repository**
-   ```
+   ```shell
    git clone https://github.com/ivegabr/docs-styles.git
    ```
 2. **Set environment variables**
-   ```
-   export VALE_CONFIG_PATH=~/praecepta/.vale.ini
-   export VALE_STYLES_PATH=~/praecepta/styles
+   ```shell
+   export VALE_CONFIG_PATH=~/docs-styles/.vale.ini
+   export VALE_STYLES_PATH=~/docs-styles/styles
    ```
    Note: this assumes you cloned the repo directly to your home directory - adjust these paths if necessary.
 3. **Confirm configuration**
    You can use built-in commands to check the configuration has been located and see the current paths:
-   ```
+   ```shell
    vale ls-config
    vale ls-vars
    ```
 
-Now that Vale is installed you can check individual files or directories locally
+Now that Vale is installed you can check individual files or directories locally:
 
-```
+```shell
 vale docs
 vale docs/*.md
 vale docs/test.md
