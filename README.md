@@ -13,7 +13,7 @@ It is based on:
 The Vale linter operates from a series of rules. These are defined in individual YAML files, grouped into 'Styles'.
 This repository contains the Rootstock set of rules. 
 
-## Manual check
+## Run Manual check
 
 To manually check your documentation with Vale rules, use the following steps:
 
@@ -30,6 +30,35 @@ To manually check your documentation with Vale rules, use the following steps:
 To run the documentation and test locally, see [Running locally](#running-locally)
 
 > For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
+
+## Run locally
+
+If you're looking to manually run Vale from a terminal, the recommended way is to clone the repository and then set up environment variables. You will need to create a local copy of the rules:
+
+1. **Clone the repository**
+   ```shell
+   git clone https://github.com/ivegabr/docs-styles.git
+   ```
+2. **Set environment variables**
+   ```shell
+   export VALE_CONFIG_PATH=~/docs-styles/.vale.ini
+   export VALE_STYLES_PATH=~/docs-styles/styles
+   ```
+   Note: this assumes you cloned the repo directly to your home directory - adjust these paths if necessary.
+3. **Confirm configuration**
+   You can use built-in commands to check the configuration has been located and see the current paths:
+   ```shell
+   vale ls-config
+   vale ls-vars
+   ```
+
+Now that Vale is installed you can check individual files or directories locally:
+
+```shell
+vale docs
+vale docs/*.md
+vale docs/test.md
+```
 
 ### Adding to the rules
 
@@ -88,35 +117,6 @@ There are three job steps:
   - it is surfaced directly where it will be noticed
 
 [Vale styles]: https://vale.sh/docs/topics/styles/
-
-## Running locally
-
-If you're looking to manually run Vale from a terminal, the recommended way is to clone the repository and then set up environment variables. You will need to create a local copy of the rules:
-
-1. **Clone the repository**
-   ```shell
-   git clone https://github.com/ivegabr/docs-styles.git
-   ```
-2. **Set environment variables**
-   ```shell
-   export VALE_CONFIG_PATH=~/docs-styles/.vale.ini
-   export VALE_STYLES_PATH=~/docs-styles/styles
-   ```
-   Note: this assumes you cloned the repo directly to your home directory - adjust these paths if necessary.
-3. **Confirm configuration**
-   You can use built-in commands to check the configuration has been located and see the current paths:
-   ```shell
-   vale ls-config
-   vale ls-vars
-   ```
-
-Now that Vale is installed you can check individual files or directories locally:
-
-```shell
-vale docs
-vale docs/*.md
-vale docs/test.md
-```
 
 ### Customising the rules
 
