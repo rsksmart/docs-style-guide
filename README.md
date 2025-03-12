@@ -24,25 +24,25 @@ To manually check your documentation with Vale rules, use the following steps:
 2. Clone this repository.
 3. Run Vale with the configuration file `vale.ini` from this repository for testing your documentation source files: 
     ```shell
-    vale --config ~/docs-styles/vale.ini ~/product-repository
+    vale --config ~/docs-style-guide/vale.ini ~/product-repository
     ```
 
 To run the documentation and test locally, see [Running locally](#running-locally)
 
 > For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
-## Run locally
+## Running locally
 
 If you're looking to manually run Vale from a terminal, the recommended way is to clone the repository and then set up environment variables. You will need to create a local copy of the rules:
 
 1. **Clone the repository**
    ```shell
-   git clone https://github.com/ivegabr/docs-styles.git
+   git clone https://github.com/rsksmart/docs-style-guide.git
    ```
 2. **Set environment variables**
    ```shell
-   export VALE_CONFIG_PATH=~/docs-styles/.vale.ini
-   export VALE_STYLES_PATH=~/docs-styles/styles
+   export VALE_CONFIG_PATH=~/docs-style-guide/.vale.ini
+   export VALE_STYLES_PATH=~/docs-style-guide/styles
    ```
    Note: this assumes you cloned the repo directly to your home directory - adjust these paths if necessary.
 3. **Confirm configuration**
@@ -93,9 +93,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch docs-styles repository
+      - name: Fetch docs-style-guide repository
         run: |
-          git clone https://github.com/ivegabr/docs-styles.git ./docs-styles
+          git clone https://github.com/rsksmart/docs-style-guide.git ./docs-style-guide
 
       - name: Install Vale via errata-ai/vale-action
         uses: errata-ai/vale-action@v2
