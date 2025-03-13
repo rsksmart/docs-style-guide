@@ -7,3 +7,4 @@ action:
   name: replace
 swap:
   - '.*rsk\.co.*': rootstock.io
+  - '.*rifos\.org.*': rif.technology

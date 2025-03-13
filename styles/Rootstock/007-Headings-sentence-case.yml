@@ -12,7 +12,6 @@ exceptions:
   - Docker
   - Emmet
   - gRPC
-  - I
   - Kubernetes
   - Linux
   - macOS
@@ -40,3 +39,6 @@ exceptions:
   - MicroStack
   - "Anbox Cloud"
   - "Ubuntu Server"
+  - "RBTC"
+  - "SAAS"
+  

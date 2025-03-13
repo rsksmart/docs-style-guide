@@ -1,0 +1,70 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: "https://developers.google.com/style/word-list"
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  "(?:API|rpc|developer) key": API key
+  "(?:cell ?phone|smart ?phone)": phone|mobile phone
+  "(?:dev|developer|APIs) console": API console
+  "(?:e-mail|Email|E-mail)": email
+  "(?:file ?path|path ?name)": path
+  "(?:kill|terminate|abort)": stop|exit|cancel|end
+  "(?:Web ?3|Web 3.0)": Web3
+  "(?:ok|Okay)": OK|okay
+  "(?:WiFi|wifi)": Wi-Fi
+  '[\.]+apk': APK
+  '3\-D': 3D
+  "tap (?:&|and) hold": touch & hold
+  "un(?:check|select)": clear
+  above: preceding
+  account name: username
+  a\.k\.a|aka: or|also known as
+  android: Android
+  ios: iOS
+  explorer: Rootstock Explorer
+  application: app
+  approx\.: approximately
+  authN: authentication
+  authZ: authorization
+  cellular network: mobile network
+  chapter: documents|pages|sections
+  check box: checkbox
+  CLI: command-line tool
+  click on: click|click in
+  content type: media type
+  data are: data is
+  decentralised application: dApp
+  disabled?: turn off|off
+  ephemeral IP address: ephemeral external IP address
+  fewer data: less data
+  file name: filename
+  firewalls: firewall rules
+  functionality: capability|feature
+  grayed-out: unavailable
+  HTTPs: HTTPS
+  in order to: to
+  ingest: import|load
+  long press: touch & hold
+  network IP address: internal IP address
+  open-source: open source
+  regex: regular expression
+  SHA1: SHA-1|HAS-SHA1
+  sign into: sign in to
+  sign-?on: single sign-on
+  static IP address: static external IP address
+  stylesheet: style sheet
+  synch: sync
+  tablename: table name
+  tablet: device
+  touch: tap
+  url: URL
+  vs\.: versus
+  World Wide Web: web
+  Private key: private key
+  Seed Phrase: seed phrase
+  Login: Log in
+  Signup: Sign up
+  Backup: Back up

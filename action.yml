@@ -10,9 +10,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch docs-styles repository
+      - name: Fetch docs-style-guide repository
         run: |
-          git clone https://github.com/ivegabr/docs-styles.git ./docs-styles
+          git clone https://github.com/rsksmart/docs-style-guide.git ./docs-style-guide
 
       - name: Install Vale via errata-ai/vale-action
         uses: errata-ai/vale-action@v2

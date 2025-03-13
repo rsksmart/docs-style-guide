@@ -1,0 +1,8 @@
+extends: existence
+message: "Avoid using a URL as the linked text. Use: [Page title](https://page-url.com) instead of: [https://page-url.com](https://page-url.com)"
+scope: raw
+nonword: true
+level: warning
+ignorecase: false
+tokens: 
+  - \b\[https?://[^\]]+\]\([https?://[^\]]+\)\b

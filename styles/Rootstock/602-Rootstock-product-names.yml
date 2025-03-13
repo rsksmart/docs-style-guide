@@ -7,5 +7,12 @@ action:
   name: replace
 swap:
   - RSK: Rootstock
+  - Rif: RIF
   - RSKJ: RSKj
-  - Rootstock: Rootstock
+  - RootStock: Rootstock
+  - Rns: RNS
+  - rbtc: RBTC
+  - Dapp: dApp
+  - RLogin: rLogin
+  - RWallet: rWallet
+  - Tokenbridge: Token Bridge
