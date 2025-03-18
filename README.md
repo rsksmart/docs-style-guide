@@ -70,7 +70,7 @@ Close your terminal, and open it again to load the environment variables.
 
 4. **Check that the rules have been loaded**
 
-This step is optional, but you can use built-in commands to check the configuration has been located and see the current paths:
+This step is optional, but you can use built-in commands to check that the configuration has been found to access the current paths:
 
 ```shell
 vale ls-config
