@@ -168,7 +168,7 @@ In this repository there are two vale config files:
 
 Anyone is welcome to submit a PR to add additional rules. However, no additions will be considered unless they are part of the Rootstock Style Guide as found in this [docs repository](https://github.com/rsksmart/devportal/blob/main/STYLE-GUIDE.md).
 
-For a reference on rule syntax, see the Vale [documentation on Styles][Vale styles].
+For a reference on rule syntax, see the Vale [documentation on Styles](https://vale.sh/docs/styles).
 
 If you are completely new to developing Vale rules, see this [introductory guide](https://github.com/canonical/praecepta/blob/8c7fee862b2258c692439ef430198e393bdc30c4/getting-started.md). 
 
