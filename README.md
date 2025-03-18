@@ -13,46 +13,70 @@ It is based on:
 The Vale linter operates from a series of rules. These are defined in individual YAML files, grouped into 'Styles'.
 This repository contains the Rootstock set of rules. 
 
-## Run Manual check
+There are two alternatives to run the rules linting tool.
+You can use it locally, through the CLI or the VSCode Extension, and you can also implement it on an automatic pipeline that will run on each PR.
 
-To manually check your documentation with Vale rules, use the following steps:
-
-1. Install Vale
-    ```shell
-    brew install vale
-    ```
-2. Clone this repository.
-3. Run Vale with the configuration file `vale.ini` from this repository for testing your documentation source files: 
-    ```shell
-    vale --config ~/docs-style-guide/vale.ini ~/product-repository
-    ```
-
-To run the documentation and test locally, see [Running locally](#running-locally)
+> To run the documentation and test locally, see [Running locally](#running-locally)
 
 > For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
-## Running locally
+## 1. Running locally
+To check locally your documentation with Vale rules, use the following steps:
 
-If you're looking to manually run Vale from a terminal, the recommended way is to clone the repository and then set up environment variables. You will need to create a local copy of the rules:
+You can use Vale from a terminal throught its CLI, and you can integrate it on VSCode to enable errors highlighting directly on the editor.
 
-1. **Clone the repository**
+For both cases, first you need to install Vale and clone the Documentation Styles Guide repository.
+
+Open a new terminal and follow the next steps:
+
+1. **Install Vale**
+
+    ```shell
+    brew install vale
+    ```
+
+2. **Clone the repository**
+
+Clone the `docs-style-guide` repository. 
+
+Note: This set of instructions will clone the repository to your home directory, and set it as a reference for the vale rules.
+
+
    ```shell
+   cd ~
    git clone https://github.com/rsksmart/docs-style-guide.git
    ```
-2. **Set environment variables**
+
+3. **Set environment variables**
+
+Set the environment variables in your terminal, so Vale can locate the config files needed to run.
+
    ```shell
-   export VALE_CONFIG_PATH=~/docs-style-guide/.vale.ini
+   export VALE_CONFIG_PATH=~/docs-style-guide/vale.ini
    export VALE_STYLES_PATH=~/docs-style-guide/styles
    ```
-   Note: this assumes you cloned the repo directly to your home directory - adjust these paths if necessary.
-3. **Confirm configuration**
-   You can use built-in commands to check the configuration has been located and see the current paths:
+
+Note: Setting the environment variables in this way makes them available for your current terminal session only, and when you close the terminal the variables no longer exist. For that reason, you need to add these variables to your `.bash_profile` file (or `.bashrc`, `.zshrc`, depending on your environment).
+
    ```shell
-   vale ls-config
-   vale ls-vars
+    echo "export VALE_CONFIG_PATH=~/docs-style-guide/vale.ini" >> .bash_profile
+    echo "export VALE_STYLES_PATH=~/docs-style-guide/styles" >> .bash_profile
    ```
 
-Now that Vale is installed you can check individual files or directories locally:
+Close your terminal, and open it again to load the environment variables.
+
+4. **Check that the rules have been loaded**
+
+This step is optional, but you can use built-in commands to check the configuration has been located and see the current paths:
+
+```shell
+vale ls-config
+vale ls-vars
+```
+
+5. **Check indidual files or directories using the CLI**
+
+Now that Vale is installed you can check individual files or directories locally using the vale CLI:
 
 ```shell
 vale docs
@@ -60,21 +84,20 @@ vale docs/*.md
 vale docs/test.md
 ```
 
-### Adding to the rules
+6. **VSCode extension**
 
-Anyone is welcome to submit a PR to add additional rules. However, no additions will be considered unless they are part of the Rootstock Style Guide as found in this [docs repository](https://github.com/rsksmart/devportal/blob/main/STYLE-GUIDE.md).
+If you use VSCode, you can install the Vale VSCode extension, and it will automatically highlight errors and suggestions on the editor in real time.
 
-For a reference on rule syntax, see the Vale [documentation on Styles][Vale styles].
+To install it, follow these steps:
 
-If you are completely new to developing Vale rules, see this [introductory guide](https://github.com/canonical/praecepta/blob/8c7fee862b2258c692439ef430198e393bdc30c4/getting-started.md). 
+1. Install  [Vale VSCode](https://marketplace.visualstudio.com/items?itemName=chrischinchilla.vale-vscode) extension
+2. Go to Settings > Vale > Vale CLI: Config > Add the absolute path to the Vale config file, located in the `docs-style-guide` directory that you cloned. Note this is the absolute path, so it will look like this: `/Users/<your-user>/docs-style-guide/vale.ini`
 
-### Using the rules
 
-The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Rootstock Styles. Two common scenarios are also catered for more directly here, as detailed below.
 
-## The Rootstock Style GitHub Action
+## 2. Run on GitHub Actions
 
-This repository also includes a file, `action.yml`, which is the basis of a GitHub action to automatically run Vale checks on incoming pull requests. 
+This repository also includes a file, `action.yml`, which is the basis of a GitHub Action to automatically run Vale checks on incoming pull requests. The workflow will run linting only on the diff of the documentation files included in the PR, and add comments with the defects found.
 
 ### Using the GitHub action in a workflow
 
@@ -107,18 +130,45 @@ jobs:
 ```
 
 In the example above, the workflow is organised as a single job. This is important as the actions rely on persistence through the run.
+
 There are three job steps:
+
  - The github/checkout action: this fetches the code from the repo calling the workflow
  - The style guide action: this fetches the styles and, if not present, a default config for Vale. The example fetches from the main branch since rules are currently under active development.
  - The vale/reviewdog action: this runs Vale using reviewdog, to insert comments into a pull-request
 
  This workflow uses reviewdog to insert output into review comments on any changes. The advantage of this method is:
+
   - the actions only run on new material (i.e. stuff added in the current PR)
   - it is surfaced directly where it will be noticed
 
 [Vale styles]: https://vale.sh/docs/topics/styles/
 
-### Customising the rules
+## Customising the rules
 
 The published Vale GitHub action ignores suggestions and turns off some features which are likely to cause a lot of noise if run in their default state. A lot of things boil down to spellings. For example, the rule which checks for sentence case in headings doesn't know that SATA is an initialism by default, so if you include it, completely reasonably, in a heading it will be marked as an error. You may wish to turn this back on **if** you have a fairly complete vocabulary list.
 The example `vale.ini` file enumerates all the current rules and explicitly sets their error levels. This makes it simple to turn rules on or off, or add the spelling options, by simply making a copy of this file, editing it and including it in the repository where the checks are run. 
+
+**Note on `vale.ini`:**
+
+In this repository there are two vale config files:
+
+- `vale.ini`
+  - Main Configuration: Contains the actual Vale configuration and rules. This is where you define the styles, paths, and other settings for Vale.
+
+
+- `.vale.ini`
+  - Pointer Configuration: The .vale.ini file acts as a pointer to the main configuration file vale.ini. This is used for centralizing the configuration and making it easier to reference from different locations or repositories. 
+
+
+### Adding to the rules
+
+Anyone is welcome to submit a PR to add additional rules. However, no additions will be considered unless they are part of the Rootstock Style Guide as found in this [docs repository](https://github.com/rsksmart/devportal/blob/main/STYLE-GUIDE.md).
+
+For a reference on rule syntax, see the Vale [documentation on Styles][Vale styles].
+
+If you are completely new to developing Vale rules, see this [introductory guide](https://github.com/canonical/praecepta/blob/8c7fee862b2258c692439ef430198e393bdc30c4/getting-started.md). 
+
+### Using the rules
+
+The Vale rules are published here so that they can be used in any workflow anywhere. You can run Vale locally, as part of CI or in a GitHub workflow - all you need is Vale, a configuration file (which you can also copy from this repository) and the Rootstock Styles. Two common scenarios are also catered for more directly here, as detailed below.
