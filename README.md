@@ -13,7 +13,7 @@ It is based on:
 The Vale linter operates from a series of rules. These are defined in individual YAML files, grouped into 'Styles'.
 This repository contains the Rootstock set of rules. 
 
-There are two alternatives to run the rules linting tool.
+There are two ways to run the linting tool containing the rules.
 You can use it locally, through the CLI or the VSCode Extension, and you can also implement it on an automatic pipeline that will run on each PR.
 
 > To run the documentation and test locally, see [Running locally](#running-locally)
