@@ -66,7 +66,7 @@ Note: Setting the environment variables in this way makes them available for you
     echo "export VALE_STYLES_PATH=~/docs-style-guide/styles" >> .bash_profile
    ```
 
-Close your terminal, and open it again to load the environment variables.
+Close and reopen terminal to load the environment variables.
 
 4. **Check that the rules have been loaded**
 
