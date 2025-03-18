@@ -23,7 +23,7 @@ You can setup Vale locally using the CLI or the VSCode Extension.
 ## Set up an Automation Pipeline
 To set up an automated pipeline that will run on each PR. See the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
-## 1. Running locally
+## Running the Project Locally
 To review the documentation locally using the Vale rules created, follow the steps:
 
 Install Vale using the [CLI](https://vale.sh/docs/install), and integrate on VSCode to enable errors highlighting directly on the editor.
