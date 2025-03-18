@@ -59,7 +59,7 @@ Set the environment variables in your terminal, so Vale can locate the config fi
    export VALE_STYLES_PATH=~/docs-style-guide/styles
    ```
 
-Note: Setting the environment variables in this way makes them available for your current terminal session only, and when you close the terminal the variables no longer exist. For that reason, you need to add these variables to your `.bash_profile` file (or `.bashrc`, `.zshrc`, depending on your environment).
+Note: Setting the environment variables using the method makes them available for the current terminal session only, if the terminal is closed, the variables no longer exist. You would need to add these variables to your `.bash_profile` file or (`.bashrc`, `.zshrc`), depending on your environment.
 
    ```shell
     echo "export VALE_CONFIG_PATH=~/docs-style-guide/vale.ini" >> .bash_profile
