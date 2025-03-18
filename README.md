@@ -77,7 +77,7 @@ vale ls-config
 vale ls-vars
 ```
 
-5. **Check indidual files or directories using the CLI**
+5. **Check individual files or directories using the CLI**
 
 Now that Vale is installed, you can check individual files or directories locally using the vale CLI:
 
