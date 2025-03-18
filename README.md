@@ -21,7 +21,7 @@ You can use it locally, through the CLI or the VSCode Extension, and you can als
 > For automation, see the [Rootstock Style GitHub action](#the-rootstock-style-github-action).
 
 ## 1. Running locally
-To check locally your documentation with Vale rules, use the following steps:
+To review the documentation locally using the Vale rules created, follow the steps:
 
 You can use Vale from a terminal throught its CLI, and you can integrate it on VSCode to enable errors highlighting directly on the editor.
 
