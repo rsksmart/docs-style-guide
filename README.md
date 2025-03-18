@@ -25,7 +25,7 @@ To review the documentation locally using the Vale rules created, follow the ste
 
 Install Vale using the [CLI](https://vale.sh/docs/install), and integrate on VSCode to enable errors highlighting directly on the editor.
 
-For both cases, first you need to install Vale and clone the Documentation Styles Guide repository.
+For both ways, you need to install Vale and clone the Documentation Styles Guide repository.
 
 Open a new terminal and follow the next steps:
 
