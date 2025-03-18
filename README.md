@@ -14,7 +14,9 @@ The Vale linter operates from a series of rules. These are defined in individual
 This repository contains the Rootstock set of rules. 
 
 There are two ways to run the linting tool containing the rules.
-You can use it locally, through the CLI or the VSCode Extension, and you can also implement it on an automatic pipeline that will run on each PR.
+## Set up Locally
+
+You can setup Vale locally using the CLI or the VSCode Extension.
 
 > To run the documentation and test locally, see [Running locally](#running-locally)
 
