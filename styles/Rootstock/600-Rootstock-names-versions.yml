@@ -7,4 +7,4 @@ action:
   name: replace
 swap:
   Postgresql : 'PostgreSQL'
-  R-BTC: 'RBTC'
+  RBTC: 'rBTC'
