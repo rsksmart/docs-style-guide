@@ -6,13 +6,16 @@ level: error
 action:
   name: replace
 swap:
-  - RSK: Rootstock
+  - '(?!(https://public-node\.testnet\.rsk\.co|https://public-node\.rsk\.co))RSK': Rootstock
   - Rif: RIF
   - RSKJ: RSKj
+  - rskJ: RSKj
   - RootStock: Rootstock
   - Rns: RNS
-  - rbtc: RBTC
+  - rbtc: rBTC
   - Dapp: dApp
   - RLogin: rLogin
   - RWallet: rWallet
   - Tokenbridge: Token Bridge
+  - FlyOver: Flyover
+  - Powpeg: PowPeg
