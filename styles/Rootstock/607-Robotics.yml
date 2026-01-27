@@ -1,0 +1,79 @@
+extends: substitution
+message: "AI-style pattern detected. Consider using '%s' instead of '%s'."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  
+  # AIsms Vocabulary
+  unleash the power of: use
+  unlock the potential of: enable
+  delve into: explain
+  dive deep into: examine
+  navigate the complexities of: manage
+  at its core: fundamentally
+  in today's fast-paced: ""
+  in the ever-evolving landscape: ""
+
+  # Technical "Fluff"
+  it is important to note that: ""
+  it should be mentioned that: ""
+  underscore the importance of: highlight
+  pivotal role: important role
+  testament to: shows
+  seamlessly integrate: integrate
+
+  # Blockchain Buzzwords
+  cutting-edge: ""
+  state-of-the-art: ""
+  unparalleled security: high security
+  game-changer: ""
+  revolutionize: improve
+
+  # Punctuation & Structure
+  ' — ': ", "
+  ';': "."
+  ' – ': " - "
+
+  # THE "-ING" ANALYSIS
+  ", highlighting": "."
+  ", underscoring": "."
+  ", ensuring": "to ensure"
+  ", reflecting": "."
+  ", showcasing": "."
+  ", fostering": "to foster"
+
+  # SIGNIFICANCE PUFFERY
+  marking a pivotal moment: "is an update to"
+  stands as a testament: "is"
+  serves as a reminder: "is"
+  underscores the significance: "highlights"
+  is a key turning point: "is"
+  marking a significant shift: "is"
+  the evolving landscape: "the industry"
+
+  # COPULA AVOIDANCE
+  serves as a: "is a"
+  stands as a: "is a"
+  functions as a: "is a"
+  represents a: "is a"
+  boasts a: "has a"
+
+  # VAGUE ATTRIBUTIONS
+  industry observers have noted: ""
+  experts argue: ""
+  some critics argue: ""
+  it is widely believed: ""
+
+  # AI VOCABULARY "TELLS"
+  tapestry: "collection"
+  intricate: "complex"
+  garner: "get"
+  interplay: "interaction"
+  vibrant: ""
+  rich history: "history"
+
+# STRUCTURAL AI PATTERNS (Regex-style Substitutions)
+  'it is not (?:just|merely) about .+, it is about': "direct statement"
+  '\w+, \w+, and \w+': "specific list"
