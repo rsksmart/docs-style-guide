@@ -4,7 +4,40 @@ scope: raw
 nonword: true
 level: warning
 tokens:
-  - ^```.*\n(([^\n`][^\n#]*\n|\n))*([^\n#]+#.*\n)+([^\n`]*\n)*```
-  - ^```.*\n([^\n`][^\n]*\n|\n)*([^\n\/][^\n\/]+\/\/.*\n)+([^\n`]*\n)*```
+  # -------------------------------------------------------------------------
+  # Hash-style inline comments (Python, YAML, shell, Ruby, etc.)
+  #
+  # Anatomy of the pattern:
+  #   ^```[^\n]*\n           opening fence
+  #   (?:(?!```)[^\n]*\n)*?  intermediate content lines, non-greedy;
+  #                          (?!```) prevents the match from crossing
+  #                          another fence — fixes the cross-block bug
+  #   [^\n]*[\w\)\]\}"';,\.]+[ \t]+#[^\n]*\n
+  #                          the comment-marker line: some content, then a
+  #                          code-terminating char (word char, close-bracket,
+  #                          quote, ; , .), then whitespace, then '#', then
+  #                          the rest of the line. Requiring a code-terminator
+  #                          before whitespace-then-# is what makes this an
+  #                          INLINE comment (rule name) rather than a
+  #                          standalone-`# ...` line, and also excludes
+  #                          markdown headers and URL fragments `.../#anchor`.
+  #   (?:(?!```)[^\n]*\n)*?  more content lines (non-greedy, fence-safe)
+  #   ```                    closing fence
+  # -------------------------------------------------------------------------
+  - '(?m)^```[^\n]*\n(?:(?!```)[^\n]*\n)*?[^\n]*[\w\)\]\}"'';,\.]+[ \t]+#[^\n]*\n(?:(?!```)[^\n]*\n)*?```'
+
+  # -------------------------------------------------------------------------
+  # Slash-style inline comments (JS, TS, C, Java, Rust, Go, etc.)
+  #
+  # Same structure as above, with:
+  #   - '//' as the marker (with (?<!:) so URL schemes like https:// don't
+  #     count as inline comments)
+  #   - Optional whitespace before '//' (JS style is often 'x;// comment' with
+  #     no space, so [ \t]* not [ \t]+).
+  # -------------------------------------------------------------------------
+  - '(?m)^```[^\n]*\n(?:(?!```)[^\n]*\n)*?[^\n]*[\w\)\]\}"'';,\.]+[ \t]*(?<!:)\/\/[^\n]*\n(?:(?!```)[^\n]*\n)*?```'
+
+  # re structuredText code blocks (unchanged — these were not implicated in
+  # the false-positive bug and their scoping is inherently different).
   - '\.\. code(-block)?:.*\n(\s+.*#.*\n)+'
   - '\.\. code(-block)?:.*\n(\s+.*//.*\n)+'
